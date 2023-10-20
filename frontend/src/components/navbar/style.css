@@ -4,5 +4,25 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap:10px
+    gap:14px
+  }
+
+
+  .main-nav-link  {
+    font-weight: bold;
+    color: #2c3e50;
+    text-decoration: none;
+  }
+
+  .main-nav-link span {
+    margin-left: 8px;
+  }
+  
+  .main-nav-link.router-link-exact-active {
+    color: #42b983;
+  }
+  
+  
+  .main-nav-link:hover {
+    text-decoration: underline;
   }

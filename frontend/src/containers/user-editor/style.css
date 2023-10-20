@@ -1,0 +1,32 @@
+.editor {
+    color: white;
+    margin-bottom: 2rem;
+    height: 200px;
+}
+
+.editor-input-wrapper {
+   display: flex ;
+   justify-content: space-between;
+   width: 300px;
+   margin: auto;
+   margin-bottom: 10px;
+}
+
+.editor-confirm {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.editor-button {
+    width: 100px;
+    padding: 10px 0;
+    background-color: #00bc77;
+    color: white;
+    font-weight: bold;
+}
+
+.editor input {
+    padding: 2px 4px;
+}

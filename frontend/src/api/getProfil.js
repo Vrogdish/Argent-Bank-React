@@ -14,7 +14,6 @@ export const getProfil = async (token) => {
     });
 
     const result = await reponse.json();
-    console.log(result);
     return result;
 
   } catch (error) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authState, tokenState } from "../../store/authSlice";
-import { Link, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getProfil } from "../../api/getProfil";
 import { loadProfilState, resetProfilState } from "../../store/ProfilSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,12 +13,12 @@ import "./style.css";
 
 export default function Navbar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // logout
   const handleclick = () => {
     window.confirm("Are you sure to diconnect ?");
-
-    redirect("/");
+    navigate("/");
     dispatch(authState(false));
     dispatch(tokenState(""));
     dispatch(resetProfilState());
@@ -45,24 +45,26 @@ export default function Navbar() {
   const userName = useSelector((state) => state.profilState.userName);
 
   return (
-    <nav>
+    <>
       {auth ? (
         <div className="main-nav-item">
-          <Link to={`/user`}>
+          <Link to={`/user`} className="main-nav-link">
             <FontAwesomeIcon icon={faCircleUser} />
-            <div>{userName}</div>
+            <span>{userName}</span>
           </Link>
-          <div onClick={() => handleclick()}>
+          <div onClick={() => handleclick()} className="main-nav-link">
             <FontAwesomeIcon icon={faRightFromBracket} />
-            <div>Sign Out</div>
+            <span>Sign Out</span>
           </div>
         </div>
       ) : (
-        <Link to={"/signIn"} className="main-nav-item">
-          <FontAwesomeIcon icon={faCircleUser} />
-          <div>Sign In</div>
-        </Link>
+        <div className="main-nav-item">
+          <Link to={"/signIn"} className="main-nav-link">
+            <FontAwesomeIcon icon={faCircleUser} />
+            <span>Sign In</span>
+          </Link>
+        </div>
       )}
-    </nav>
+    </>
   );
 }

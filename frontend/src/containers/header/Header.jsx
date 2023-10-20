@@ -4,6 +4,7 @@ import { mainStore } from "../../store/store";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/argentBankLogo.png";
 import Navbar from "../../components/navbar/Navbar";
+import "./style.css"
 
 export default function Header() {
   return (
