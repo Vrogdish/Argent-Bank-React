@@ -53,7 +53,7 @@ export default function Navbar() {
     <>
       {auth ? (
         <div className="main-nav-item">
-          <Link to={`/user`} className="main-nav-link">
+          <Link to={`/profile`} className="main-nav-link">
             <FontAwesomeIcon icon={faCircleUser} />
             <span>{userName}</span>
           </Link>
@@ -64,7 +64,7 @@ export default function Navbar() {
         </div>
       ) : (
         <div className="main-nav-item">
-          <Link to={"/signIn"} className="main-nav-link">
+          <Link to={"/login"} className="main-nav-link">
             <FontAwesomeIcon icon={faCircleUser} />
             <span>Sign In</span>
           </Link>

@@ -47,7 +47,7 @@ export default function SignInForm() {
         dispatch(loadProfilState(profil.body));
 
         // router.push(`/user`);
-        navigate("/user")
+        navigate("/profile")
       }
     } else {
       alert(login?.message);
