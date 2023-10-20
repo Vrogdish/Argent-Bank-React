@@ -23,9 +23,9 @@ import AccountLabel from '../../components/account-label/accountLabel'
 export default function UserAccount() {
   return (
     <div>
-      <h2 class="sr-only">Accounts</h2>
-      {accounts.map((item)=>(
-        <AccountLabel account={item}/>
+      <h2 className="sr-only">Accounts</h2>
+      {accounts.map((item, index)=>(
+        <AccountLabel account={item} key={index}/>
       ))}
     </div>
   )

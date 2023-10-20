@@ -18,6 +18,7 @@ export const getProfil = async (token) => {
 
   } catch (error) {
     console.log(error);
- 
+    alert("server not responding")
+
   }
 };

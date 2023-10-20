@@ -44,6 +44,13 @@ export default function UserEditor({closeEditor}) {
               required: "Type your new username",
             })}
           />
+                <div className="alert">
+        <ErrorMessage
+          name="username"
+          errors={errors}
+          render={({ message }) => <p>{message}</p>}
+        />
+      </div>
         </div>
         <div className="editor-input-wrapper">
           <label htmlFor="firstname" className="">
@@ -78,13 +85,7 @@ export default function UserEditor({closeEditor}) {
           </button>
         </div>
       </form>
-      <div className="">
-        <ErrorMessage
-          name="username"
-          errors={errors}
-          render={({ message }) => <p>{message}</p>}
-        />
-      </div>
+
     </div>
   );
 }

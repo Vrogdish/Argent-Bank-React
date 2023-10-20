@@ -35,6 +35,9 @@ html {
     white-space: nowrap !important; /* 3 */
   }
   
+  .alert {
+    color: red;
+  }
 
 
 

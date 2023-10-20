@@ -93,11 +93,12 @@ export default function SignInForm() {
         </div>
         <input type="submit" value={"Sign in"} className="sign-in-button" />
       </form>
-      <div>
+      <div className="alert">
         <ErrorMessage
           name="email"
           errors={errors}
           render={({ message }) => <p>{message}</p>}
+          
         />
         <ErrorMessage
           name="password"

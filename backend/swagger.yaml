@@ -101,6 +101,95 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /user/accounts :
+    get :
+      security :
+        - Bearer : []
+      tags : 
+        - Account Module
+      summary : User accounts API
+      description : API for fetching accounts
+      produces : 
+        - application/json
+      responses :
+        "200" : 
+          description : User accounts retrieved successfully
+          schema : 
+            type : array
+            items : 
+              $ref : "#/definitions/Account"
+        "400" : 
+          description : "Invalid Fields"
+        "401" :
+          description : "Unauthorized"
+        "500" : 
+          description : "Internal Server Error"
+  /user/transactions : 
+    get :
+      security : 
+        - Bearer : []
+      tags :
+        - Account Module
+      summary : User transactions API
+      description : API for fetching transactions
+      produces : 
+        - application/json
+      responses : 
+        "200" : 
+          description : User transactions retrieved successfully
+          schema : 
+           type : array
+           items : 
+             $ref : "#/definitions/Transaction"
+        "400" : 
+          description : "Invalid Fields"
+        "401" :
+          description : "Unauthorized"
+        "500" : 
+          description : "Internal Server Error"
+  /user/transactions/{id} : 
+    patch :
+      security : 
+        - Bearer : []
+      tags :
+        - Account Module
+      summary : User transactions API
+      description : API for updating transaction
+      produces : 
+        - application/json
+      parameters :
+        - name : id
+          in : path
+          description : Id of transaction to update
+          required : true
+          type : string
+        - in : body
+          name : description
+          description : Update transaction category or note attributes
+          schema : 
+            type : object
+            properties : 
+              category : 
+                type : string
+              note : 
+                type : string
+      responses : 
+        "200" : 
+          description : User transaction updated successfully
+          schema : 
+           type : array
+           items : 
+             $ref : "#/definitions/Transaction"
+        "400" : 
+          description : "Invalid Fields"
+        "401" :
+          description : "Unauthorized"
+        "403" : 
+          description : "Forbidden"
+        "404" :
+          description : "Not Found"
+        "500" : 
+          description : "Internal Server Error"    
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -156,3 +245,47 @@ definitions:
     properties:
       userName:
         type: string
+  Transaction:
+    type : object
+    properties :
+      id : 
+        type : string
+      accountId :
+        type : string
+      date :
+        type : string
+      description :
+        type : object
+        properties :
+          title : 
+            type : string
+
+          transactionType :
+            type : string
+          category : 
+            type : string
+          note : 
+            type : string
+      amout : 
+        type : number
+  Account : 
+    type: object
+    properties : 
+      title :
+        type : string
+      id : 
+        type : string
+      amout : 
+        type : number
+      balanceType :
+        type : string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

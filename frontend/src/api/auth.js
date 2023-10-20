@@ -19,5 +19,7 @@ export const auth = async (userData) => {
     return result;
   } catch (error) {
     console.log(error);
+    alert("server not responding")
+
   }
 };

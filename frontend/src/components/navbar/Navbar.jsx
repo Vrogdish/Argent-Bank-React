@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authState, tokenState } from "../../store/authSlice";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,32 +17,37 @@ export default function Navbar() {
 
   // logout
   const handleclick = () => {
-    window.confirm("Are you sure to diconnect ?");
-    navigate("/");
-    dispatch(authState(false));
-    dispatch(tokenState(""));
-    dispatch(resetProfilState());
-    localStorage.clear();
-  };
-
-  // autoConnect if remember
-  const autoConnect = async (token) => {
-    dispatch(tokenState(token));
-
-    const profil = await getProfil(token);
-    if (profil?.status === 200) {
-      dispatch(loadProfilState(profil?.body));
-      dispatch(authState(true));
+    const confirm = window.confirm("Are you sure to diconnect ?");
+    if (confirm === true) {
+      navigate("/");
+      dispatch(authState(false));
+      dispatch(tokenState(""));
+      dispatch(resetProfilState());
+      localStorage.clear();
     }
   };
 
-  const localStorageToken = localStorage.getItem("token");
-  if (localStorageToken) {
-    autoConnect(localStorageToken);
-  }
+  useEffect(() => {
+    // autoConnect if remember
+    const autoConnect = async (token) => {
+      dispatch(tokenState(token));
+      const profil = await getProfil(token);
+      if (profil?.status === 200) {
+        dispatch(loadProfilState(profil?.body));
+        dispatch(authState(true));
+      }
+    };
 
-  const auth = useSelector((state) => state.authState.isLogged);
+    const localStorageToken = localStorage.getItem("token");
+    if (localStorageToken) {
+      autoConnect(localStorageToken);
+    }
+  }, [dispatch]);
+
+
+
   const userName = useSelector((state) => state.profilState.userName);
+  const auth = useSelector((state) => state.authState.isLogged);
 
   return (
     <>

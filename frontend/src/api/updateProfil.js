@@ -21,6 +21,6 @@ export const updateProfil = async (username,token) => {
 
     } catch (error) {
         console.log(error)
- 
+        alert("server not responding")
     }
 }
